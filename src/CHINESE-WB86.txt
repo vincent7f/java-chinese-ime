@@ -4912,6 +4912,7 @@ lyj=罚
 lyjj=罚
 lyn=辘
 lynx=辘
+m=同
 ma=曲
 mad=曲
 madt=贼
