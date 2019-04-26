@@ -41,6 +41,7 @@ public class IMEInputMethod implements InputMethod {
 	static IMEStatePanel		statePanel			= null;
 	private Locale				locale				= Utils.getLocale() == null ? IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI
 															: Utils.getLocale();
+	
 
 	public IMEInputMethod() throws IOException {
 		ime = new IMEImp(locale);
@@ -57,7 +58,13 @@ public class IMEInputMethod implements InputMethod {
 						Utils.getSimpleToComplexFlag());
 			}
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			sw.setBounds(15, screenSize.height - 78, 255, 50);
+			sw.setBounds(
+					IMEUIConfig.getInt("WINDOW_LEFT_OFFSET"),
+					screenSize.height - IMEUIConfig.getInt("WINDOW_HEIGHT") - IMEUIConfig.getInt("WINDOW_BOTTOM_OFFSET"),
+					IMEUIConfig.getInt("WINDOW_WIDTH"), 
+					IMEUIConfig.getInt("WINDOW_HEIGHT"));
+			
+			
 			synchronized (this.getClass()) {
 				if (statusWindow == null) {
 					statusWindow = sw;
