@@ -1,0 +1,1 @@
+java -Djava.ext.dirs=.. -jar java-input-box.jar
