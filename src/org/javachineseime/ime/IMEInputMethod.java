@@ -27,6 +27,7 @@ import org.javachineseime.ime.common.Utils;
  *         <li> msn:luosheng_lqdnnl@hotmail.com
  *         <li>
  *         </ul>
+ * @author vincent7f
  * 
  */
 public class IMEInputMethod implements InputMethod {
@@ -165,25 +166,31 @@ public class IMEInputMethod implements InputMethod {
 		if (event.getID() == KeyEvent.KEY_RELEASED) {
 			if (lookup != null) {
 				KeyEvent e = (KeyEvent) event;
-				int keyCode = e.getKeyCode();
-				if (keyCode == KeyEvent.VK_LEFT) {
-					ime.prev();
-					lookup.setlbSelectText(ime.out());
-				} else if (keyCode == KeyEvent.VK_RIGHT) {
-					ime.next();
-					lookup.setlbSelectText(ime.out());
-				} else if (keyCode == KeyEvent.VK_DOWN) {
-					ime.last();
-					lookup.setlbSelectText(ime.out());
-				} else if (keyCode == KeyEvent.VK_UP) {
-					ime.first();
-					lookup.setlbSelectText(ime.out());
-				} else if (keyCode == KeyEvent.VK_ENTER
-						|| keyCode == KeyEvent.VK_ESCAPE) {
-					imein.setLength(0);
-					lookup.setlbIMEInText("");
-					closeLookupWindow();
+				switch(e.getKeyCode()) {
+					case KeyEvent.VK_LEFT:
+						ime.prev();
+						lookup.setlbSelectText(ime.out());
+						break;
+					case KeyEvent.VK_RIGHT: // arrow right
+						ime.next();
+						lookup.setlbSelectText(ime.out());
+						break;
+					case KeyEvent.VK_DOWN:
+						ime.last();
+						lookup.setlbSelectText(ime.out());
+						break;
+					case KeyEvent.VK_UP:
+						ime.first();
+						lookup.setlbSelectText(ime.out());
+						break;
+					case KeyEvent.VK_ENTER:
+					case KeyEvent.VK_ESCAPE:
+						imein.setLength(0);
+						lookup.setlbIMEInText("");
+						closeLookupWindow();
+						break;
 				}
+				
 				if (active && imein.length() > 0) {
 					e.consume();
 				}
