@@ -1,2 +1,4 @@
 # Current Version: 2.0
-* bug fix: missing m=ͬ
+* more shortcuts.
+* Customing window size and location in the file ui.properties.
+* bug fix: missing m=ͬ .
