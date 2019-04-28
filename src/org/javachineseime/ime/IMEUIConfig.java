@@ -13,6 +13,7 @@ public final class IMEUIConfig {
 		init();
 		
 		String value = properties.getProperty(name);
+		value = value.trim();
 		System.out.println(name + " = " + value);
 		return Integer.parseInt(value);
 	}

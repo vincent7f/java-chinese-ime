@@ -83,7 +83,7 @@ public class IMELookupPanel extends JPanel {
 		} else {
 			lookupWindow.add(this);
 		}
-		lookupWindow.setSize(new Dimension(446, 68));
+		lookupWindow.setSize(IMEUIConfig.getInt("CANDIDATE_WINDOW_WIDTH"), IMEUIConfig.getInt("CANDIDATE_WINDOW_HEIGHT"));
 		updateWindowLocation();
 		lookupWindow.setVisible(true);
 	}
@@ -137,7 +137,7 @@ public class IMELookupPanel extends JPanel {
 		lbSelectText.setPreferredSize(new Dimension(26, 20));
 		lbSelectText.setFont(new Font("Dialog", Font.PLAIN, 14));
 		this.setLayout(new BorderLayout());
-		this.setSize(new Dimension(454, 52));
+		this.setSize(new Dimension(454, 152));
 
 		this.add(lbSelectText, BorderLayout.CENTER);
 //		lbShowIMEName.addMouseListener(new java.awt.event.MouseAdapter() {
