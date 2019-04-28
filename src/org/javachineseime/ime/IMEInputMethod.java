@@ -167,14 +167,16 @@ public class IMEInputMethod implements InputMethod {
 			if (lookup != null) {
 				KeyEvent e = (KeyEvent) event;
 				switch(e.getKeyCode()) {
+					case KeyEvent.VK_MINUS: // - with the _
 					case KeyEvent.VK_LEFT:
 						ime.prev();
 						lookup.setlbSelectText(ime.out());
-						break;
+						break;					
+					case KeyEvent.VK_EQUALS: // =
 					case KeyEvent.VK_RIGHT: // arrow right
 						ime.next();
 						lookup.setlbSelectText(ime.out());
-						break;
+						break;		
 					case KeyEvent.VK_DOWN:
 						ime.last();
 						lookup.setlbSelectText(ime.out());
