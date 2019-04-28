@@ -32,7 +32,7 @@ public class IMEStatePanel extends JPanel {
 	private IMEImp				ime					= null;
 	private JPanel				jPanel2				= null;
 	private JLabel				lbGbkToBig5			= null;
-	private Locale				locale				= IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI;
+	private Locale				locale				= IMEDescriptor.DEFAULT_LOCALE; //IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI;
 	
 
 	public IMEStatePanel() {
@@ -112,6 +112,8 @@ public class IMEStatePanel extends JPanel {
 			locale = Locale.TRADITIONAL_CHINESE;
 		} else if (locale.equals(Locale.TRADITIONAL_CHINESE)) {
 			locale = IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI;
+		} else {
+			System.out.println("unknown locale in setIMEState(): " + locale);
 		}
 		setIMEState(locale);
 	}
@@ -126,6 +128,8 @@ public class IMEStatePanel extends JPanel {
 			this.lbShowIMEName.setText("ŒÂ± (CTRL+SHIFT)");
 		} else if (this.locale.equals(Locale.TRADITIONAL_CHINESE)) {
 			this.lbShowIMEName.setText("≤÷Ú°(CTRL+SHIFT)");
+		} else {
+			System.out.println("unknown locale in setIMEState(): " + locale);
 		}
 	}
 

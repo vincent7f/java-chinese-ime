@@ -40,7 +40,7 @@ public class IMEInputMethod implements InputMethod {
 	static final String			statusWindowTitle	= "JAVA Chinese IME";
 	static Window				statusWindow		= null;
 	static IMEStatePanel		statePanel			= null;
-	private Locale				locale				= Utils.getLocale() == null ? IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI
+	private Locale				locale				= Utils.getLocale() == null ? IMEDescriptor.DEFAULT_LOCALE //IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI
 															: Utils.getLocale();
 	
 
@@ -301,7 +301,7 @@ public class IMEInputMethod implements InputMethod {
 	}
 
 	public Locale getLocale() {
-		return Utils.getLocale() == null ? IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI
+		return Utils.getLocale() == null ? IMEDescriptor.DEFAULT_LOCALE//IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI
 				: Utils.getLocale();
 	}
 
@@ -322,7 +322,7 @@ public class IMEInputMethod implements InputMethod {
 
 	/** ÏÔÊ¾´°¿Ú */
 	private void openLookupWindow() {
-		Locale locale = Utils.getLocale() == null ? IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI
+		Locale locale = Utils.getLocale() == null ? IMEDescriptor.DEFAULT_LOCALE //MEDescriptor.SIMPLIFIED_CHINESE_PING_YI
 				: Utils.getLocale();
 		if (lookup == null) {
 			lookup = new IMELookupPanel(this, inputMethodContext, (IMEImp) ime,

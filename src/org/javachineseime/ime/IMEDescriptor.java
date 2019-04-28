@@ -17,9 +17,10 @@ import java.util.Locale;
 public class IMEDescriptor implements InputMethodDescriptor {
 
 	public static final Locale SIMPLIFIED_CHINESE_PING_YI = new Locale("zh", "CN", "∆¥“Ù");
+	public static final Locale DEFAULT_LOCALE = Locale.SIMPLIFIED_CHINESE; // Default locale for IME
 
 	public Locale[] getAvailableLocales() throws AWTException {
-		return new Locale[] { SIMPLIFIED_CHINESE_PING_YI, Locale.SIMPLIFIED_CHINESE, Locale.TRADITIONAL_CHINESE };
+		return new Locale[] { Locale.SIMPLIFIED_CHINESE, Locale.TRADITIONAL_CHINESE, SIMPLIFIED_CHINESE_PING_YI};
 	}
 
 	public boolean hasDynamicLocaleList() {

@@ -84,6 +84,8 @@ public class IMEImp implements IME {
 			if (charTWList != null) {
 				result.addAll(charTWList);
 			}
+		} else {
+			System.out.println("unknown locale: " + local);
 		}
 		start = 0;
 	}

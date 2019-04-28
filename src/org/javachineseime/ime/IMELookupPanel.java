@@ -56,7 +56,7 @@ public class IMELookupPanel extends JPanel {
 	private JLabel				lbGbkToBig5			= null;
 	private InputMethodContext	inputMethodContext	= null;
 	private String				lookupWindowTitle	= " ‰»Î¥∞ø⁄";
-	private Locale				locale				= IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI;
+	private Locale				locale				= IMEDescriptor.DEFAULT_LOCALE; //IMEDescriptor.SIMPLIFIED_CHINESE_PING_YI;
 
 	public IMELookupPanel() {
 		initialize();
