@@ -1,6 +1,7 @@
 package org.javachineseime.ime.common;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -15,9 +16,9 @@ public class Utils {
 	private static Locale	locale				= null;
 	private static int		simpleToComplexFlag	= SimpleToComplexFlag.COMPLEX_TO_SIMPLE;
 
-	/** ¶ÁÈ¡ key=value µÄÕâÑùÎÄ¼þµÄÊý¾Ý */
+	/** ï¿½ï¿½È¡ key=value ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	public static Map<Integer, Map<String, List>> getKeyMap(String fileName) {
-		System.out.println("==================¶ÁÈ¡" + fileName);
+		System.out.println("==================ï¿½ï¿½È¡" + fileName);
 		Map<Integer, Map<String, List>> map = new HashMap<Integer, Map<String, List>>(
 				50);
 		try {
@@ -31,7 +32,7 @@ public class Utils {
 					continue;
 				}
 				//
-				// substring (i,i) Òª±È split() ÐÔÄÜÒª¸ß
+				// substring (i,i) Òªï¿½ï¿½ split() ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½
 				//
 				String key = line.substring(0, equalSymbol);
 				String value = line.substring(equalSymbol + 1, line.length());
@@ -41,7 +42,7 @@ public class Utils {
 				String word = "";
 				for (int j = 0; j < keyLength; j++) {
 					//
-					// key.charAt Òª±È key.toCharArray ÐÔÄÜÒª¸ß
+					// key.charAt Òªï¿½ï¿½ key.toCharArray ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½
 					//
 					word += String.valueOf(key.charAt(j));
 					Map<String, List> keyMap = map.get(j + 1);
@@ -65,9 +66,9 @@ public class Utils {
 		return map;
 	}
 
-	/** ¶ÁÈ¡py.tab.txt */
+	/** ï¿½ï¿½È¡py.tab.txt */
 	public static Map<Integer, Map<String, List>> getSinglePyMap(String fileName) {
-		System.out.println("==================¶ÁÈ¡" + fileName);
+		System.out.println("==================ï¿½ï¿½È¡" + fileName);
 		Map<Integer, Map<String, List>> map = new HashMap<Integer, Map<String, List>>(
 				50);
 		try {
@@ -144,8 +145,13 @@ public class Utils {
 		BufferedReader br2 = null;
 		List<String> strs = new ArrayList<String>(5000);
 		try {
-			br2 = new BufferedReader(new InputStreamReader(ccl
-					.getResourceAsStream(fileName), "UTF-8"));
+			try {//load from local folder
+				br2 = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
+			} catch (Exception e) {
+				// load from class loader
+				br2 = new BufferedReader(new InputStreamReader(ccl
+						.getResourceAsStream(fileName), "UTF-8"));
+			}
 			String line = "";
 			while ((line = br2.readLine()) != null) {
 				strs.add(line);

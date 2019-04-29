@@ -25,11 +25,21 @@ public final class IMEUIConfig {
 		
 		String filepath = "uiconfig.properties";
 		try {
+			System.out.println("try to load file from local folder: " + filepath);
 			InputStream inputStream = new FileInputStream(filepath);
 			IMEUIConfig.properties.load(inputStream);			
 		} catch (IOException e) {
-			System.out.println("fail to load file: " + filepath);
+			System.out.println("fail to load file from local folder: " + filepath);
 			e.printStackTrace();
+			System.out.println("try to load from class loader: " + filepath);
+			ClassLoader ccl = Thread.currentThread().getContextClassLoader();
+			InputStream inputStream = ccl.getResourceAsStream(filepath);
+			try {
+				IMEUIConfig.properties.load(inputStream);
+			} catch (IOException e1) {
+				System.out.println("fail to load file from class loader: " + filepath);
+				e1.printStackTrace();
+			}
 		}
 		
 		isLoaded = true;
