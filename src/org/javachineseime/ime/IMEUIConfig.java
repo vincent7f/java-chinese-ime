@@ -14,7 +14,7 @@ public final class IMEUIConfig {
 		
 		String value = properties.getProperty(name);
 		value = value.trim();
-		System.out.println(name + " = " + value);
+//		System.out.println(name + " = " + value);
 		return Integer.parseInt(value);
 	}
 
